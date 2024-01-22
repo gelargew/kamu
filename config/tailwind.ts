@@ -20,10 +20,13 @@ const COLOR_CONFIG = {
 	},
   golden: {
     DEFAULT: '#94783e'
+  },
+  card: {
+    DEFAULT: '#0E191F'
   }
 };
 
-const backgroundUtilities = {
+const customComponent = {
 	'.ybg-btn-gradient': {
     position: 'relative',
 		borderRadius: '8px',
@@ -67,10 +70,15 @@ const backgroundUtilities = {
       opacity: '0.6',
     }
 	},
+  '.card': {
+    borderRadius: '16px',
+    background: COLOR_CONFIG.card.DEFAULT,
+    padding: '14px 8px'
+  }
 };
 
 const tailwindPlugin = ({ addComponents }: any) => {
-	addComponents(backgroundUtilities);
+	addComponents(customComponent);
 };
 
 export { COLOR_CONFIG, tailwindPlugin };

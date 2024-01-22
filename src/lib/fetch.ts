@@ -8,11 +8,11 @@ export const Fetch = async (
 ) => {
 	const token = cookies().get('token');
 	const headers = (init?.headers as Record<string, string>) || {};
-
+  headers['Content-Type'] = 'application/json';
 	if (token) {
 		headers['x-access-token'] = `${token.value}`;
 	} else {
-		// delete headers['x-access-token'];
+		delete headers['x-access-token'];
 	}
 
   const config = {
@@ -22,7 +22,6 @@ export const Fetch = async (
 
   const resource = APP_CONFIG.API_URL + input;
 	const response = await originalFetch(resource, config);
-  console.log(config)
 
 	return response;
 };

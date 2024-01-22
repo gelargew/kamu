@@ -1,29 +1,13 @@
-import { userCreate } from '@/app/auth/actions';
+import { userCreate } from '@/app/actions';
 import { Input } from '@/components/ui/input';
 import { InputPassword } from '@/components/ui/inputPassword';
 import Link from 'next/link';
+import { RegisterForm } from './form';
 
 export default function Login() {
 	return (
 		<>
-			<form action={userCreate} className="mt-[60px]">
-      <Input
-					className="mb-[11px]"
-					placeholder="Enter Email"
-					name="email"
-          type='email'
-				/>
-				<Input
-					className="mb-[11px]"
-					placeholder="Create Username"
-					name="username"
-				/>
-				<InputPassword className='mb-[11px]' placeholder="Create Password" name="password" />
-        <InputPassword placeholder="Confirm Password" name="confirm_password" />
-				<button className="w-full ybg-btn-gradient mt-8" disabled>
-					Register
-				</button>
-			</form>
+      <RegisterForm />
 			<div className="flex justify-center">
 				Have an account?{' '}
 				<Link
