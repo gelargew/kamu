@@ -4,12 +4,11 @@ import { Login, Register } from '@/schemas/auth';
 import { cookies } from 'next/headers';
 import { Fetch } from '@/lib/fetch';
 import { redirect } from 'next/navigation';
-import { Profile } from '@/schemas/profile';
+import { Profile, UpdateProfile } from '@/schemas/profile';
 
 const userLogin = async (formdata: FormData) => {
 	const entries = Object.fromEntries(formdata);
 	const payload = Login.parse(entries);
-	await new Promise((resolve) => setTimeout(resolve, 2000));
 	if (payload) {
 		const res = await Fetch('/api/login', {
 			method: 'POST',
@@ -18,6 +17,7 @@ const userLogin = async (formdata: FormData) => {
 		if (res.ok) {
 			const data = await res.json();
 			cookies().set('token', data.access_token);
+      await new Promise((resolve) => setTimeout(resolve, 500));
 			redirect('/');
 		}
 	}
@@ -55,12 +55,19 @@ const userProfile = async () => {
 	const res = await Fetch('/api/getProfile').then((res) =>
 		res.json()
 	);
-	return res as BaseResponse<Profile>;
+  const data = Profile.safeParse(res.data)
+
+  if (!data.success) {
+    console.log(data.error.errors)
+    redirect('/auth/login')}
+
+	return data.data
 };
 
-const userEditProfile = async (formdata: FormData) => {
+const userEditProfile = async (interests: string, formdata: FormData) => {
 	const entries = Object.fromEntries(formdata);
-	const payload = Register.parse(entries);
+	const payload = UpdateProfile.parse(entries);
+  payload.interests = JSON.parse(interests)
 	if (payload) {
 		const res = await Fetch('/api/updateProfile', {
 			method: 'PUT',
@@ -72,4 +79,27 @@ const userEditProfile = async (formdata: FormData) => {
 	}
 };
 
-export { userLogin, userCreate, userProfile, userEditProfile };
+const userUpdateInterest = async ( profile: Omit<Profile, 'interests'>,formdata: FormData) => {
+	const entries = Object.fromEntries(formdata);
+  console.log(entries, 'ENTRIES')
+  const payload = {
+    ...profile,
+    interests: JSON.parse(entries.interests as string)
+  }
+  console.log(payload)
+	if (payload) {
+		const res = await Fetch('/api/updateProfile', {
+			method: 'PUT',
+			body: JSON.stringify(payload),
+		});
+		if (res.ok) {
+			redirect('/');
+		}
+	}
+};
+
+const logout = async () => {
+  cookies().delete('token');
+}
+
+export { userLogin, userCreate, userProfile, userEditProfile, userUpdateInterest, logout };
