@@ -1,14 +1,14 @@
 import { z } from "zod";
 
 const Profile = z.object({
-	username: z.string(),
+	username: z.string().nullable(),
 	email: z.string().email(),
   name: z.string().optional(),
-  birthday: z.string().transform((value) => new Date(value)).optional(),
+  birthday: z.string().nullable().transform((value) => value ? new Date(value) : null),
   horoscope: z.string().optional(),
   zodiac: z.string().optional(),
-  height: z.string().transform((value) => parseInt(value.toString())).or(z.number()).optional(),
-  weight: z.string().transform((value) => parseInt(value.toString())).or(z.number()).optional(),
+  height: z.number().or(z.string().transform((value) => value ? parseInt(value) : null)).nullable(),
+  weight: z.number().or(z.string().transform((value) => value ? parseInt(value) : null)).nullable(),
 	interests: z.array(z.string()).catch([]),
   gender: z.enum(['male', 'female']).catch('male'),
 });

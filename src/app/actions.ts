@@ -17,12 +17,15 @@ const userLogin = async (
             method: 'POST',
             body: JSON.stringify(payload),
         })
+        const data = await res.json()
         if (res.ok) {
-            const data = await res.json()
+
             cookies().set('token', data.access_token)
-            await new Promise(resolve => setTimeout(resolve, 500))
+            console.log(data,' ----data')
             redirect('/')
+
         }
+        return data
     }
     return currentState
 }
@@ -60,6 +63,7 @@ const userProfile = async () => {
     const data = Profile.safeParse(res.data)
 
     if (!data.success) {
+        cookies().delete('token')
         redirect('/auth/login')
     }
 

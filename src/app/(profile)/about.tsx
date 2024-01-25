@@ -102,7 +102,7 @@ const AboutInfo = ({ profile }: { profile: Profile }) => {
 }
 
 const AboutForm = ({ profile }: { profile: Profile }) => {
-    const [date, setDate] = useState<Date | undefined>(profile.birthday)
+    const [date, setDate] = useState<Date | undefined>(profile.birthday || undefined)
     const [zodiac, horoscope] = useMemo(
         () => [dateToZodiac(date), dateToHoroscope(date)],
         [date],
@@ -171,7 +171,7 @@ const AboutForm = ({ profile }: { profile: Profile }) => {
                         name='height'
                         className='h-9'
                         suffix='cm'
-                        defaultValue={profile?.height}
+                        defaultValue={profile?.height || ''}
                     />
                 </div>
                 <div className='items-center mb-[11px]'>
@@ -181,7 +181,7 @@ const AboutForm = ({ profile }: { profile: Profile }) => {
                         name='weight'
                         className='h-9'
                         suffix='kg'
-                        defaultValue={profile?.weight}
+                        defaultValue={profile?.weight || ''}
                     />
                 </div>
             </div>
@@ -195,15 +195,15 @@ const RenderField = ({
     suffix = '',
 }: {
     label: string
-    value?: string | number
+    value?: string | number | null
     suffix?: string
 }) => {
     return (
-        <p className='text-[13px] text-white-33 mb-[15px]'>
+        <p className='text-[13px] text-white-33 mb-[15px] flex items-center'>
             {label}:{' '}
             <span className='text-white'>
                 {' '}
-                {value || '--'} {value && suffix}
+                {value || '--'} {value &&  suffix}
             </span>
         </p>
     )

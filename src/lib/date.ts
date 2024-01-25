@@ -1,6 +1,7 @@
 import { format } from 'date-fns'
 
-const dateToAge = (date: Date) => {
+const dateToAge = (date: Date | null) => {
+  if (!date) return ''
     const today = new Date()
     const birthDate = new Date(date)
     let age = today.getFullYear() - birthDate.getFullYear()
@@ -11,7 +12,7 @@ const dateToAge = (date: Date) => {
     return age
 }
 
-const dateToHoroscope = (date?: Date) => {
+const dateToHoroscope = (date?: Date | null) => {
     if (!date) return '--'
     let x = date.getMonth() * 100 + date.getDate()
     return x >= 221 && x <= 319
@@ -39,7 +40,7 @@ const dateToHoroscope = (date?: Date) => {
         : 'Capricorn'
 }
 
-const dateToZodiac = (date?: Date) => {
+const dateToZodiac = (date?: Date | null) => {
     if (!date) return '--'
     const birthday = format(date, 'yyyyMMdd')
     let sign = '-'
