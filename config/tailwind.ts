@@ -8,6 +8,7 @@ const COLOR_CONFIG = {
 		40: 'rgba(255, 255, 255, 0.40)',
 		33: 'rgba(255, 255, 255, 0.33)',
 		22: 'rgba(255, 255, 255, 0.22)',
+    10: 'rgba(255, 255, 255, 0.10)',
 		'06': 'rgba(217, 217, 217, 0.06)',
 	},
 	primary: {
@@ -70,10 +71,38 @@ const customComponent = {
       opacity: '0.6',
     }
 	},
+  '.ybg-radial-dark': {
+		backgroundImage: 'linear-gradient(135deg, #ABFFFD 2.64%, #4599DB 102.4%, #AADAFF 102.4%)',
+    backgroundSize: '200% auto',
+		backgroundClip: 'text',
+		WebkitBackgroundClip: 'text',
+		WebkitTextFillColor: 'transparent',
+    '&:hover': {
+      opacity: '0.8',
+    },
+    '&:active': {
+      opacity: '0.6',
+    }
+	},
   '.card': {
     borderRadius: '16px',
     background: COLOR_CONFIG.card.DEFAULT,
     padding: '14px 8px'
+  },
+  '.badge': {
+    padding: '8px 16px',
+    borderRadius: '9999px',
+    background: COLOR_CONFIG.white['06'],
+    fontSize: 14,
+    fontWeight: 600,
+    color: COLOR_CONFIG.white.DEFAULT,
+    maxWidth: '10em',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    transition: '0.3s ease-out',
+    '&:hover': {
+      maxWidth: '60em'
+    }
   }
 };
 
