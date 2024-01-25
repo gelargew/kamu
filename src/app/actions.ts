@@ -18,10 +18,8 @@ const userLogin = async (
             body: JSON.stringify(payload),
         })
         const data = await res.json()
-        if (res.ok) {
-
+        if (data.access_token) {
             cookies().set('token', data.access_token)
-            console.log(data,' ----data')
             redirect('/')
 
         }
@@ -49,7 +47,7 @@ const userCreate = async (
             body: JSON.stringify(payload.data),
         })
         const data = await res.json()
-        if (res.ok) {
+        if (data.message == 'User has been created successfully') {
             redirect('/auth/login')
         }
         return data

@@ -5,9 +5,7 @@ import type { NextRequest } from 'next/server'
 export default function middleware(request: NextRequest) {
 
   const token = request.cookies.get('token')
-  console.log(token)
   if (!token?.value) {
-    console.log('----HAHAHAHAHHA--')
     return NextResponse.redirect(new URL('/auth/login', request.url))
   }
 }

@@ -22,6 +22,7 @@ export const Form = () => {
             />
             <InputPassword placeholder='Enter Password' name='password' />
             <Login />
+            {state.message && <p className='text-xs text-red-500 mt-2' >{state.message}</p>}
         </form>
     )
 }
