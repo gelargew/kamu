@@ -6,7 +6,7 @@ import { InputPassword } from '@/components/ui/inputPassword'
 import { useFormState, useFormStatus } from 'react-dom'
 
 export const Form = () => {
-    const [state, dispatch] = useFormState(userCreate, {} as BaseErrorResponse)
+    const [state, dispatch] = useFormState(userLogin, {} as BaseErrorResponse)
     return (
         <form action={dispatch} className='mt-[60px]'>
             <Input

@@ -15,20 +15,26 @@ export const Account = ({ profile }: { profile: Profile }) => {
     }, [isEditing])
     return (
         <div className='aspect-[36/19] w-full rounded-[16px] bg-secondary mb-6 overflow-hidden relative  flex flex-col justify-end'>
-            <Image
-                src={img}
-                width={360}
-                height={240}
-                alt={profile.name || ''}
-                className='absolute inset-0 z-0'
-            />
-            <div
-                className='absolute inset-0 z-10'
-                style={{
-                    background:
-                        'linear-gradient(180deg, rgba(0, 0, 0, 0.76) 0%, rgba(0, 0, 0, 0.00) 45.83%, #000 100%)',
-                }}
-            />
+            {img && (
+                <>
+                    <Image
+                        src={img}
+                        width={360}
+                        height={240}
+                        alt={profile.name || ''}
+                        className='absolute inset-0 z-0'
+                    />
+
+                    <div
+                        className='absolute inset-0 z-10'
+                        style={{
+                            background:
+                                'linear-gradient(180deg, rgba(0, 0, 0, 0.76) 0%, rgba(0, 0, 0, 0.00) 45.83%, #000 100%)',
+                        }}
+                    />
+                </>
+            )}
+
             <div className='z-20 relative p-4'>
                 <div className='font-bold text-base mb-[6px]'>
                     @{profile.username},{' '}
