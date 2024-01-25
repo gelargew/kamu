@@ -17,7 +17,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(inter.variable, 'max-w-[420px] m-auto')}>{children}</body>
+      <body className={cn(inter.variable)}>
+        <div className='max-w-[420px] m-auto bg-primary' >{children}</div></body>
     </html>
   );
 }

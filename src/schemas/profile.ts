@@ -3,14 +3,19 @@ import { z } from "zod";
 const Profile = z.object({
 	username: z.string(),
 	email: z.string().email(),
-  name: z.string(),
-  birthday: z.string().optional(),
+  name: z.string().optional(),
+  birthday: z.string().transform((value) => new Date(value)).optional(),
   horoscope: z.string().optional(),
-  height: z.number().optional(),
-  weight: z.number().optional(),
-	interests: z.array(z.string()),
+  zodiac: z.string().optional(),
+  height: z.string().transform((value) => parseInt(value.toString())).or(z.number()).optional(),
+  weight: z.string().transform((value) => parseInt(value.toString())).or(z.number()).optional(),
+	interests: z.array(z.string()).catch([]),
+  gender: z.enum(['male', 'female']).catch('male'),
 });
 
-type Profile = z.infer<typeof Profile>;
+const UpdateProfile = Profile.omit({ username: true, email: true })
 
-export { Profile }
+type Profile = z.infer<typeof Profile>;
+type UpdateProfile = z.infer<typeof UpdateProfile>;
+
+export { Profile, UpdateProfile }

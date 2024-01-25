@@ -9,7 +9,7 @@ export const RegisterForm = () => {
   const [state, dispatch] = useFormState(userCreate, {} as BaseErrorResponse)
 
 	return (
-		<form action={dispatch} onClick={() => console.log(state)} className="mt-[60px]">
+		<form action={dispatch} className="mt-[60px]">
 			<Input
 				className="mb-[11px]"
 				placeholder="Enter Email"
