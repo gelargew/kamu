@@ -22,7 +22,6 @@ export const Form = () => {
             />
             <InputPassword placeholder='Enter Password' name='password' />
             <Login />
-            {JSON.stringify(state)}
         </form>
     )
 }
