@@ -7,7 +7,16 @@ export interface InputProps
     suffix: string
 }
 
-const KEYS = ['Enter', 'Backspace', 'Tab', 'Meta', 'Control', 'Alt', 'ArrowLeft', 'ArrowRight']
+const KEYS = [
+    'Enter',
+    'Backspace',
+    'Tab',
+    'Meta',
+    'Control',
+    'Alt',
+    'ArrowLeft',
+    'ArrowRight',
+]
 
 const InputWithSuffix = React.forwardRef<HTMLInputElement, InputProps>(
     ({ className, type, defaultValue, ...props }, ref) => {
@@ -15,19 +24,16 @@ const InputWithSuffix = React.forwardRef<HTMLInputElement, InputProps>(
         return (
             <div
                 className={cn(
-                    'flex items-center justify-end h-9 w-full border gap-[0.7em] border-solid border-white-22 rounded-[9px] text-[13px] bg-white-06 px-[18px] py-1 transition-colors focus-within:border-white-40 focus-within:outline-none disabled:cursor-not-allowed disabled:opacity-50',
+                    'flex h-[51px] w-full border border-solid border-white-22 rounded-[9px] text-[13px] bg-white-06 px-[18px] py-1 transition-colors placeholder:text-white-40 focus:border-white-40 read-only:text-white-33 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50',
                     className,
                 )}
             >
                 <input
                     onChange={e => setVal(e.target.value)}
                     onKeyDown={e => {
-                      if (
-                          !/[0-9]/.test(e.key) && !KEYS.includes(e.key)
-                      ) {
-                          e.preventDefault()
-                      }
-
+                        if (!/[0-9]/.test(e.key) && !KEYS.includes(e.key)) {
+                            e.preventDefault()
+                        }
                     }}
                     value={val}
                     className='bg-transparent text-[13px] placeholder:text-white-40 focus:outline-none text-right'
