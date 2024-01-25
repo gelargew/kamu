@@ -199,7 +199,7 @@ const RenderField = ({
     suffix?: string
 }) => {
     return (
-        <p className='text-[13px] text-white-33 mb-[15px] flex items-center'>
+        <p className='text-[13px] text-white-33 mb-[15px] flex gap-2'>
             {label}:{' '}
             <span className='text-white'>
                 {' '}
