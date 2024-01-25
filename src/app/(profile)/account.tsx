@@ -1,3 +1,5 @@
+'use client'
+
 import { dateToAge, dateToHoroscope, dateToZodiac } from '@/lib/date'
 import { Profile } from '@/schemas/profile'
 import Image from 'next/image'
