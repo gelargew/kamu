@@ -19,6 +19,7 @@ such auth, cool profile, nextjs
 
 
 ### Things not yet cool in Kamu
+- no error log
 - image & gender no API
 - no onchange validation on input
 - no animation yet
