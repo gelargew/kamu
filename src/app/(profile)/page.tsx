@@ -1,8 +1,7 @@
 import { userProfile } from '../actions'
-import Image from 'next/image'
-import { CardAbout } from './cards'
-import Link from 'next/link'
 import { Interest } from './interest'
+import { Account } from './account'
+import { About } from './about'
 
 export default async function Home() {
     const profile = await userProfile()
@@ -10,7 +9,8 @@ export default async function Home() {
     return (
         <main className='min-h-screen pb-9'>
             <div className='container'>
-                <CardAbout profile={profile} />
+                <Account profile={profile} />
+                <About profile={profile} />
                 {/* INTEREST */}
                 <Interest profile={profile} />
             </div>

@@ -15,7 +15,6 @@ export const InputImage = ({ name }: { name: string }) => {
             reader.onload = () => {
                 setUrl(reader.result as string)
                 localStorage.setItem(name, reader.result as string)
-                console.log(reader.result)
             }
         }
 

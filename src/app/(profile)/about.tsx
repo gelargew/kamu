@@ -3,7 +3,6 @@
 import { Profile } from '@/schemas/profile'
 import Image from 'next/image'
 import { useEffect, useMemo, useState } from 'react'
-import { atom, useAtom } from 'jotai'
 import { userEditProfile, userProfile } from '../actions'
 import { useSearchParams } from 'next/navigation'
 import { Input } from '@/components/ui/input'
@@ -15,71 +14,13 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/components/ui/select'
-import { SelectPortal } from '@radix-ui/react-select'
 import { DatePicker } from '@/components/ui/datePicker'
 import { InputWithSuffix } from '@/components/ui/inputWithSuffix'
 import { format } from 'date-fns'
 import { dateToAge, dateToHoroscope, dateToZodiac } from '@/lib/date'
 import { InputImage } from '@/components/ui/inputImage'
 
-const Main = ({ profile }: { profile: Profile }) => {
-    const [img, setImg] = useState('')
-    const isEditing = useSearchParams().get('edit') === 'true'
-
-    useEffect(() => {
-        setImg(localStorage.getItem('profile_picture') || '')
-    }, [isEditing])
-    return (
-        <div className='aspect-[36/19] w-full rounded-[16px] bg-secondary mb-6 overflow-hidden relative  flex flex-col justify-end'>
-            <Image
-                src={img}
-                width={360}
-                height={240}
-                alt={profile.name || ''}
-                className='absolute inset-0 z-0'
-            />
-            <div
-                className='absolute inset-0 z-10'
-                style={{
-                    background:
-                        'linear-gradient(180deg, rgba(0, 0, 0, 0.76) 0%, rgba(0, 0, 0, 0.00) 45.83%, #000 100%)',
-                }}
-            />
-            <div className='z-20 relative p-4'>
-                <div className='font-bold text-base mb-[6px]'>
-                    @{profile.username},{' '}
-                    {profile.birthday ? dateToAge(profile.birthday) : ''}
-                </div>
-                {/* <p className='capitalize text-[13px] mb-3'>{profile.gender}</p> */}
-                {profile.birthday && (
-                    <div className='flex gap-4'>
-                        <div className='badge bg-secondary flex gap-2'>
-                            {' '}
-                            <Image
-                                src='/icons/horoscope.svg'
-                                width='20'
-                                height='20'
-                                alt='horoscope'
-                            />{' '}
-                            {dateToZodiac(profile.birthday)}
-                        </div>
-                        <div className='badge bg-secondary flex gap-2'>
-                            <Image
-                                src='/icons/zodiac.svg'
-                                width='20'
-                                height='20'
-                                alt='zodiac'
-                            />
-                            {dateToHoroscope(profile.birthday)}
-                        </div>
-                    </div>
-                )}
-            </div>
-        </div>
-    )
-}
-
-export const CardAbout = ({ profile }: { profile: Profile }) => {
+export const About = ({ profile }: { profile: Profile }) => {
     const isEdit = useSearchParams().get('edit')
     const formAction = userEditProfile.bind(
         null,
@@ -87,7 +28,6 @@ export const CardAbout = ({ profile }: { profile: Profile }) => {
     )
     return (
         <>
-            <Main profile={profile} />
             <div className='card mb-[18px] relative w-full px-[14px] py-2'>
                 {isEdit ? (
                     <form action={formAction}>

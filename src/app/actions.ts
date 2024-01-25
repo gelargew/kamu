@@ -58,7 +58,6 @@ const userProfile = async () => {
   const data = Profile.safeParse(res.data)
 
   if (!data.success) {
-    console.log(data.error.errors)
     redirect('/auth/login')}
 
 	return data.data
@@ -81,12 +80,10 @@ const userEditProfile = async (interests: string, formdata: FormData) => {
 
 const userUpdateInterest = async ( profile: Omit<Profile, 'interests'>,formdata: FormData) => {
 	const entries = Object.fromEntries(formdata);
-  console.log(entries, 'ENTRIES')
   const payload = {
     ...profile,
     interests: JSON.parse(entries.interests as string)
   }
-  console.log(payload)
 	if (payload) {
 		const res = await Fetch('/api/updateProfile', {
 			method: 'PUT',
