@@ -6,22 +6,7 @@ import { userLogin } from '../../actions';
 export default function Login() {
 	return (
 		<>
-			<form action={userLogin} className="mt-[60px]">
-				<Input
-					className="mb-[11px]"
-					placeholder="Enter Username"
-					name="username"
-				/>
-				<Input
-					className="mb-[11px]"
-					placeholder="Enter Email"
-					name="email"
-				/>
-				<InputPassword placeholder="Enter Password" name="password" />
-				<button className="w-full ybg-btn-gradient mt-8">
-					Login
-				</button>
-			</form>
+
 			<div className="flex justify-center">
 				No account?{' '}
 				<Link
