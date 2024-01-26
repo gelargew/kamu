@@ -73,7 +73,7 @@ const AboutInfo = ({ profile }: { profile: Profile }) => {
                         value={
                             profile.birthday
                                 ? format(profile.birthday, 'dd / MMM / yyyy') +
-                                  ` (${dateToAge(profile.birthday)})`
+                                  ` (Age ${dateToAge(profile.birthday)})`
                                 : '--'
                         }
                     />

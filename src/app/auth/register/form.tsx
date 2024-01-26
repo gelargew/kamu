@@ -11,13 +11,13 @@ export const RegisterForm = () => {
     return (
         <form action={dispatch} className='mt-[60px]'>
             <Input
-                className='mb-[11px]'
+                className='mb-[11px] border-white-06'
                 placeholder='Enter Email'
                 name='email'
                 type='email'
             />
             <Input
-                className='mb-[11px]'
+                className='mb-[11px] border-white-06'
                 placeholder='Create Username'
                 name='username'
             />

@@ -10,12 +10,12 @@ export const Form = () => {
     return (
         <form action={dispatch} className='mt-[60px]'>
             <Input
-                className='mb-[11px]'
+                className='mb-[11px] border-white-06'
                 placeholder='Enter Username'
                 name='username'
             />
             <Input
-                className='mb-[11px]'
+                className='mb-[11px] border-white-06'
                 placeholder='Enter Email'
                 name='email'
                 type='email'

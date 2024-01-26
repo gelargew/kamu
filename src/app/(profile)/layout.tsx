@@ -13,7 +13,7 @@ export default async function Layout({
                 <BackButton />
                 <h1 className='text-center text-sm'>@{profile.username}</h1>
                 <form action={logout} >
-                  <button className='text-right float-right'>Logout</button>
+                  <button className='text-right float-right text-sm'>Logout</button>
                 </form>
             </div>
             {children}
