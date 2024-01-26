@@ -12,7 +12,7 @@ const BackButton = ({
 	const router = useRouter();
 	return (
 		<button
-			className={cn('flex gap-2 items-center text-[14px]')}
+			className={cn('flex gap-2 items-center text-[14px] ymicro', className)}
 			onClick={router.back}
 			{...props}
 		>

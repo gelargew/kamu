@@ -109,6 +109,18 @@ const customComponent = {
 			maxWidth: '60em',
 		},
 	},
+  '.ymicro': {
+    transition: '0.3s ease-out',
+    '&:hover': {
+      opacity: 0.8
+    },
+    '&:active': {
+      opacity: 0.7
+    },
+    '&:disabled': {
+      opacity: 0.5
+    }
+  }
 };
 
 const tailwindPlugin = ({ addComponents }: any) => {

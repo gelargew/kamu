@@ -9,7 +9,7 @@ export const Interest = ({ profile }: { profile: Profile }) => {
                 <h2 className='text-[14px] font-bold'>Interest</h2>
                 <Link
                     href={'/interest'}
-                    className='absolute top-2 right-[14px]'
+                    className='absolute top-2 right-[14px] ymicro'
                 >
                     <Image
                         src='/icons/pencil.svg'

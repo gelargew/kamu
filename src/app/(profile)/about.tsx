@@ -48,7 +48,7 @@ const AboutInfo = ({ profile }: { profile: Profile }) => {
                 <h2 className='text-[14px] font-bold'>About</h2>
 
                 <button
-                    className='absolute top-2 right-[14px]'
+                    className='absolute top-2 right-[14px] ymicro'
                     onClick={() =>
                         window.history.pushState({}, '', '?edit=true')
                     }
